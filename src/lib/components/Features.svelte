@@ -64,7 +64,7 @@
     };
   </script>
   
-  <section id="features">
+  <section id="features" style="padding-left:2.5%">
     <div class="container">
       <div class="mx-auto max-w-6xl">
         <div class="mx-auto my-12 grid h-full items-center gap-10 lg:grid-cols-2">
@@ -135,7 +135,7 @@
             </div>
           </div>
   
-          <div class="h-[350px] min-h-[200px] w-auto {ltr && 'lg:order-1'}">
+          <div style="padding-left:0%;" class="h-[350px] min-h-[200px] w-auto {ltr && 'lg:order-1'}">
             {#if data[$currentIndex]?.image}
               <img
                 src={data[$currentIndex].image}
