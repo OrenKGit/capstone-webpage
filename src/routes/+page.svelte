@@ -12,6 +12,7 @@
 	import BlurIn from '$lib/components/BlurIn.svelte';
 	import Features from '$lib/components/Features.svelte';
 	import BoxReveal from '$lib/components/BoxReveal.svelte';
+	import BackgroundBoxesNew from '$lib/components/BackgroundBoxesNew.svelte';
 	//import { variantPriorityOrder } from 'svelte-motion/types/render/utils/animation-state';
 	const contacts = [
 		{
@@ -143,7 +144,7 @@
 	
 	<BoxReveal boxColor={"#5046e6"} duration={0.5}>
 		<div class="mt-[1.5rem]">
-			<img src="/qcom.png" alt="Qualcomm Logo" class="w-1/2 h-1/2">
+			<img src="./qcom.png" alt="Qualcomm Logo" class="w-1/2 h-1/2">
 		</div>
 	</BoxReveal>
   </div>
@@ -188,7 +189,7 @@
 </div>
 
 <GradualSpacing
-  class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-6xl md:leading-[5rem]"
+  class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-5xl md:leading-[5rem]"
   words="Methods Overview"
 />
 
@@ -220,8 +221,22 @@
 
 </div>
 
+<!--
+<div
+	class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-slate-900 p-60"
+>
+	<div class="pointer-events-none absolute inset-0 z-20 h-full w-full bg-slate-900 [mask-image:radial-gradient(transparent,white)]">
+	</div>
+	<BackgroundBoxesNew/>
+	<h2 class={cn('relative z-20 text-xl text-white md:text-4xl')}>Graph Partitioning Methods</h2>
+	<p class="relative z-20 mt-2 text-center text-neutral-300">
+		Partitioning Chip Data for Congestion Prediction
+	</p>
+</div>
+-->
+
 <GradualSpacing
-  class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-7xl md:leading-[5rem]"
+  class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-5xl md:leading-[5rem]"
   words="Results & Conclusions"
 />
 
