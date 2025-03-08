@@ -221,7 +221,7 @@
           </div>
         </div>
         <div class="flex items-center justify-center pl-4">
-          <img src="/congestion_example.png" alt="Description of image">
+          <img src="./congestion_example.png" alt="Description of image">
         </div>
       </div>
       <!-- Divider -->
@@ -250,7 +250,7 @@
           </div>
         </div>
         <div class="flex items-center justify-center pl-4">
-			<img src="/data_diagram.svg" alt="Description of image">
+			<img src="./data_diagram.svg" alt="Description of image">
         </div>
       </div>
 	  <!-- Divider -->
@@ -274,7 +274,7 @@
 			</div>
         </div>
         <div class="flex items-center justify-center pl-4">
-          <img src="/qcom.png" alt="Description of image">
+          <img src="./qcom.png" alt="Description of image">
         </div>
       </div>
 	  <!-- Divider -->
@@ -300,7 +300,7 @@
           </div>
         </div>
         <div class="flex items-center justify-center pl-4">
-          <img src="/qcom.png" alt="Description of image">
+          <img src="./qcom.png" alt="Description of image">
         </div>
       </div>
     </div>
