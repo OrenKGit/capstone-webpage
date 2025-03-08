@@ -4,7 +4,7 @@
   
     // Svelte 5 Code : https://svelte.dev/playground/39866a136f0d4268821e5ae901dce47f?version=5.0.5
   
-    export let collapseDelay = 5000;
+    export let collapseDelay = 2000;
     export let ltr = false;
     export let linePosition: "left" | "right" | "top" | "bottom" = "left";
     export let data: Array<{
@@ -140,7 +140,7 @@
               <img
                 src={data[$currentIndex].image}
                 alt="feature"
-                class="aspect-auto size-full rounded-xl border border-neutral-300/50 object-cover object-left-top p-1 shadow-lg"
+                class="aspect-auto size-full rounded-xl border border-neutral-300/50 object-cover object-center p-1 shadow-lg"
               />
             {:else if data[$currentIndex]?.video}
               <video
