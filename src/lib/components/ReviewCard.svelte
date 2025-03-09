@@ -9,22 +9,27 @@
 
 <figure
 	class={cn(
-		'relative w-64 cursor-pointer overflow-hidden rounded-2xl border p-4',
+		'relative w-64 cursor-pointer overflow-hidden rounded-lg shadow-lg p-6',
 		// light styles
-		'border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]',
+		'bg-white hover:bg-gray-100',
 		// dark styles
-		'dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]'
+		'dark:bg-gray-800 dark:hover:bg-gray-700'
 	)}
 >
-	<div class="flex flex-row items-center gap-2">
-		<img class="rounded-full" width="32" height="32" alt="" src={img} />
-		<div class="flex flex-col">
-			<!-- svelte-ignore a11y-structure -->
-			<figcaption class="text-sm font-medium dark:text-white">
-				{name}
-			</figcaption>
-			<p class="text-xs font-medium dark:text-white/40">{username}</p>
-		</div>
+	<div class="flex flex-col items-center">
+		<img class="w-20 h-20 rounded-full object-cover" alt="{name}" src={img} />
+		<figcaption class="text-lg font-semibold text-gray-900 dark:text-white">
+			{name}
+		</figcaption>
+		<p class="text-sm text-gray-500 dark:text-gray-400">{username}</p>
 	</div>
-	<blockquote class="mt-2 text-sm">{body}</blockquote>
+	<p class="mt-4 text-sm text-center text-gray-700 dark:text-gray-300">
+		{body}
+	</p>
 </figure>
+
+<style>
+	figure {
+		transition: background-color 0.3s ease;
+	}
+</style>

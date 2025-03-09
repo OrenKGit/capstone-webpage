@@ -208,5 +208,10 @@
       width: 3rem;
       height: 3rem;
     }
+    .no-mask {
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      background-image: none !important;
+    }
   </style>
   
