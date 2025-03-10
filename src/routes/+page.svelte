@@ -1,5 +1,5 @@
 <script>
-	import AnimatedGradientText from '$lib/components/AnimatedGradientText.svelte';
+	import AuroraText from '$lib/components/AuroraText.svelte';
 	import AnimatedUniBeam from '$lib/components/AnimatedUniBeam.svelte';
 	import Circle from '$lib/components/Circle.svelte';
 	import FlickeringGrid from '$lib/components/FlickeringGrid.svelte';
@@ -11,6 +11,7 @@
 	import LetterPullUp from '$lib/components/LetterPullUp.svelte';
 	import GridPattern from '$lib/components/GridPattern.svelte';
 	import GridBeam from "$lib/components/GridBeam.svelte";
+	import GridBeam2 from "$lib/components/GridBeam2.svelte";
 	import BlurIn from '$lib/components/BlurIn.svelte';
 	import Features from '$lib/components/Features.svelte';
 	import BoxReveal from '$lib/components/BoxReveal.svelte';
@@ -70,6 +71,11 @@
     ];
 </script>
 
+
+
+
+
+
 <div
 	class="relative w-screen h-screen mx-auto bg-background overflow-hidden flex items-center justify-center"
 >
@@ -101,6 +107,10 @@
 		</div>
 	</div>
 </div>
+
+
+
+
 
 <div class="flex flex-wrap gap-12 justify-center items-center" style="padding: 5% 5%;">
   <div
@@ -178,6 +188,11 @@
   </div>
 </div>
 
+
+
+
+
+
 <div class="w-full pt-[50px] flex justify-center items-center" style="padding: 5%;">
   <div class="h-[700px] w-full max-w-6xl overflow-y-auto rounded-lg border border-gray-200 dark:border-gray-800 p-6 mx-auto" style="background-color: #3253dc10;">
     <div class="space-y-8">
@@ -192,13 +207,13 @@
               <br>
               <br>
               Congestion describes areas with excess wire routing density and power demand, which negatively impacts performance through overheating and signal interference.
-              Many SOTA Graph ML techniques are less effective at dealing with chip layouts due to their connectivity structure.
+              Many SOTA Graph ML techniques are less effective at dealing with chip layouts due to their connectivity structure.
               <br>
               <br>
               The existing <a href='https://arxiv.org/abs/2404.00477' class='text-blue-500 hover:text-blue-700'>DE-HNN (Luo, 2024)</a> model aims to address the lack of generalizability in chip graph representations.
 			  <br>
 			  <br>
-			  Predicting and mitigating congestion early in the chip design process, before the lengthy placement and routing process, could revolutionize the field; saving time, resources, and improving chip efficiency.
+			  Predicting and mitigating congestion early in the chip design process, before the lengthy placement and routing process, could revolutionize the field; saving time, resources, and improving chip efficiency.
 			  <br>
 			  <br>
 			  We aim to enhance the graph representation of the chips to better predict congestion problem areas.
@@ -269,18 +284,33 @@
   </div>
 </div>
 
+
+
+
+
+
 <GradualSpacing
   class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-5xl md:leading-[5rem]"
   words="Methods Overview"
 />
 
+
+
+
+
+
 <div class="flex justify-center items-center pr-[2.5%] pl-[2.5%]">
 	<Features {data} linePosition='left'/>
 </div>
-<GridBeam class="sm:pl-16 pt-28 pl-4 flex items-center">
+
+
+
+
+
+<GridBeam class="pt-28 flex items-center">
 </GridBeam>
 <div 
-  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background"
+class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20 pt-0 pb-0"
 >
   <div class="grid gap-2 max-w-2xl mx-auto">
     <h1 class="text-4xl font-bold text-left">
@@ -305,10 +335,10 @@
     </p>
   </div>
 </div>
-<GridBeam class="pt-12 flex items-center">
-</GridBeam>
+<GridBeam2 class="flex items-center">
+</GridBeam2>
 <div 
-  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
+  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20 pt-0"
 >
   <div class="grid gap-2 max-w-2xl mx-auto">
 	
@@ -362,50 +392,92 @@
 </div>
 
 
-<GridBeam class="sm:pl-16 pt-28 pl-4 flex items-center">
-</GridBeam>
-<div 
-class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
->
-	<div class="grid gap-2 max-w-2xl mx-auto">
-		<h1 class="text-4xl font-bold text-left">
-			Virtual Node Partitioning
-		</h1>
-		<p class="text-neutral-500 text-left">
-			<br>
-			Understanding Random Walks in Networks
-			<br>
-			<br>
-			In a network, a walk involves starting at one node, moving to a connected node, and repeating this process. Walks can help identify patterns, understand node relationships, or find the shortest paths between points.
-			<br>
-			<br>
-			A random walk follows the same idea but selects the next node randomly at each step. While this may seem arbitrary, random walks are effective at revealing underlying structures in networks, such as clustering patterns and node similarities.
-			<br>
-			<br>
-			We apply random walks to identify nodes that, despite being far apart in the network, still influence each other in terms of congestion and demand on a chip. This approach helps capture meaningful connections that may not be immediately obvious through traditional methods.
-		</p>
-	</div>
-	
-	<GridPattern
-		squares={[
-			[4, 4],
-			[5, 1],
-			[8, 2],
-			[6, 6],
-			[10, 5],
-			[13, 3],
-		]}
-		class={cn(
-			"[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
-			"h-[100%] w-[100%] skew-y-100"
-		)}
-		fillColor="rgb(156 163 175 / .3)"
-	>
-	
-	</GridPattern>
-	
-</div>
 
+
+
+
+
+<div 
+  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20 pt-0 pb-0"
+>
+<GridPattern
+    squares={[
+      [4, 4],
+      [5, 1],
+      [8, 2],
+      [6, 6],
+      [10, 5],
+      [13, 3],
+    ]}
+    class={cn(
+      "[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]",
+      "inset-x-0 inset-y-[-50%] h-[200%] skew-y-0"
+    )}
+    fillColor="rgb(31 96 224 / 0.3)"
+  />
+  <div class="grid gap-2 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-left">
+      Virtual Node Partitioning
+    </h1>
+    <h2 class="text-2xl font-bold text-left pt-4">
+      <span class="inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">Louvain Partitioning</span>
+    </h2>
+    <p class="text-neutral-500 text-left">
+      <br>
+      <strong>Louvain clustering</strong> detects <strong>natural cell communities</strong> in chip designs by optimizing modularity. This helps identify <strong>functionally related circuit components</strong>.
+      <br><br>  
+      With an <strong>average modularity of 0.35</strong>, we see <strong>moderate community separability</strong>, reflecting both <strong>meaningful partitions</strong> and circuit complexity.
+      <br><br>  
+      We replace <strong>METIS partitions</strong> with <strong>Louvain-based partitions</strong>, which group nodes by <strong>connectivity patterns</strong> rather than enforced balance, leading to <strong>more meaningful subgraph divisions</strong>.
+      <br><br>
+      <img src="./louvain_partitioning_example.png" alt="Louvain Partitioning Example" class="mb-2">
+      <br>
+      <span class="text-sm text-gray-500 text-center justify-center">Diagram of Louvain Partitioning Method</span>
+      <br>
+      <br>
+    </p>
+    <!-- Divider -->
+    <div class="w-full h-0.5 bg-neutral-300/50 dark:bg-neutral-300/30"></div>
+    <h2 class="text-2xl font-bold text-left pt-4">
+      <span class="inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">K-Means & Bisecting K-Means Partitioning</span>
+    </h2>
+    <div class="flex items-center justify-center pl-4 space-x-4">
+      <img src="./placement_colors.png" alt="Placement Colors" class="w-1/3 h-auto">
+      <img src="./kmeans_colors.png" alt="K-Means Colors" class="w-1/3 h-auto">
+      <img src="./bkmeans_colors.png" alt="Bisecting K-Means Colors" class="w-1/3 h-auto">
+    </div>
+	<br>
+	<h3 class="text-white text-m font-bold">Approximating Placement Based Partitions</h3>
+
+    <p class="text-neutral-500 text-left">
+	  	DE-HNN demonstrated a 10% improvement in Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) when incorporating physical placement data as node features and partitioning criteria. This follows our intuition that physically close nodes will contribute to each other's congestion. <br><br>
+
+		To construct placement-based partitions, the chip was uniformly divided into 81 bounding boxes, with all nodes within a given box assigned to the same partition. <br><br>
+
+		Our objective is to approximate these placement-based partitions by clustering nodes based on features that exhibit a strong correlation with physical placement.
+    </p>
+	<br>
+	<h3 class="text-white text-m font-bold">Feature Analysis</h3>
+	<p class="text-neutral-500 text-left">
+		Using placement-based partitions, we analyzed node features to find those most correlated with the partitioning scheme. <br><br>
+
+		For each of the 81 partitions, we ranked features by correlation with partition membership and contribution to explained variance, then aggregated rankings to identify the most influential features. <br><br>
+		
+		Our analysis showed that the top-ten eigenvectors and node type were the strongest indicators of node co-partitioning.	</p>
+	<br>
+	<h3 class="text-white text-m font-bold">K-Means & Bisecting K-Means Partitioning</h3>
+	<p class="text-neutral-500 text-left">
+		K-Means clustering was used to group nodes efficiently based on features, with 81 centroids initialized to match placement partitions. <br><br>
+
+		The algorithm iteratively adjusted centroids until convergence, assigning each node a partition ID based on its nearest centroid. These IDs were used to construct virtual node structures for message passing. <br><br>
+
+		DE-HNN employs METIS to balance partition sizes. To assess the impact of balancing, we tested K-means partitions with and without enforced balance. <br><br>
+
+		Bisecting K-means, a hybrid of Hierarchical Clustering and K-means, splits clusters iteratively to achieve balanced partitions, aligning more closely with DE-HNN’s strategy.
+
+	</div>
+
+</div>
 
 
 
@@ -414,14 +486,33 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 <div 
   class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
 >
-  <div class="absolute bottom-0 left-0 w-full h-full z-0 animate-appear opacity-0">
-    <Lights />
-  </div>
   <div class="grid gap-2 max-w-2xl mx-auto">
-    <h1 class="text-4xl font-bold text-left">
-      Results & Conclusions
-    </h1>
-    <p class="text-neutral-500 text-left">
+	<h1 class="text-4xl font-bold text-left">
+		Results & Conclusions
+	</h1>
+    <p class="text-white text-xl text-left">
+		<br>
+		<img src="./test_losses_comparison_2.png" alt="Random Walks" class="mb-2">
+		<br>
+		The greatest improvement in loss for predicting node demand came from random walks with XGBoost validation at a 0.6% performance in loss. 
+		<br>
+		<br>
+		The greatest improvement in loss for predicting net demand came from the K-Means partitioning methods, with the standard and bisecting algorithms reducing loss by 6.7% and 4.4%, respectively. 
+		<br>
+		<br>
+		The Louvain partitioning method also yields intriguing results, as there is minimal loss in performance while greatly improving the computational runtime of the model.
+		<br>
+		<br>
+		Overall, the random walk method was the most effective for predicting node demand, while the K-Means partitioning methods were the most effective for predicting net demand.
+		<br>
+		<br>
+		Our results suggest that random walks are a powerful tool for identifying meaningful node relationships in networks, and that K-Means partitioning methods are effective at predicting net demand.
+		<br>
+		<br>
+		Intuitively, this makes sense because random walks operate at a node level creating connections between nodes that are far apart in the network, while K-Means partitioning methods operate by creating connections based on groups of nodes more similar to nets. 
+		<br>
+		<br>
+		
 	</p>
   </div>
 </div>
