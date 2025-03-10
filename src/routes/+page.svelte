@@ -68,6 +68,8 @@
         "https://i.pinimg.com/736x/be/c8/5c/bec85c7ff82948be479d49d3e8f5018b.jpg",
     },
     ];
+	const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
 </script>
 
 <div
@@ -81,8 +83,8 @@
 		color="#1f60e0"
 		maxOpacity={0.5}
 		flickerChance={0.1}
-		width={1920}
-		height={1080}
+		width={screenWidth}
+		height={screenHeight}
 	/>
 		
 	<div>
