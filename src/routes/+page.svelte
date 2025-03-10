@@ -400,22 +400,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 <div 
   class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20 pt-0 pb-0"
 >
-<GridPattern
-    squares={[
-      [4, 4],
-      [5, 1],
-      [8, 2],
-      [6, 6],
-      [10, 5],
-      [13, 3],
-    ]}
-    class={cn(
-      "[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]",
-      "inset-x-0 inset-y-[-50%] h-[200%] skew-y-0"
-    )}
-    fillColor="rgb(31 96 224 / 0.3)"
-  />
-  <div class="grid gap-2 max-w-2xl mx-auto">
+  <div class="grid gap-2 max-w-2xl mx-auto relative z-20">
     <h1 class="text-4xl font-bold text-left">
       Virtual Node Partitioning
     </h1>
@@ -430,9 +415,9 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
       <br><br>  
       We replace <strong>METIS partitions</strong> with <strong>Louvain-based partitions</strong>, which group nodes by <strong>connectivity patterns</strong> rather than enforced balance, leading to <strong>more meaningful subgraph divisions</strong>.
       <br><br>
-      <img src="./louvain_partitioning_example.png" alt="Louvain Partitioning Example" class="mb-2">
+      <img src="./community.png" alt="Louvain Partitioning Example">
       <br>
-      <span class="text-sm text-gray-500 text-center justify-center">Diagram of Louvain Partitioning Method</span>
+      <span class="text-sm text-gray-500 text-center justify-center pt-0">Diagram of Louvain Partitioning Method</span>
       <br>
       <br>
     </p>
@@ -446,37 +431,45 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
       <img src="./kmeans_colors.png" alt="K-Means Colors" class="w-1/3 h-auto">
       <img src="./bkmeans_colors.png" alt="Bisecting K-Means Colors" class="w-1/3 h-auto">
     </div>
-	<br>
-	<h3 class="text-white text-m font-bold">Approximating Placement Based Partitions</h3>
-
+    <br>
+    <h3 class="text-white text-m font-bold">Approximating Placement Based Partitions</h3>
     <p class="text-neutral-500 text-left">
-	  	DE-HNN demonstrated a 10% improvement in Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) when incorporating physical placement data as node features and partitioning criteria. This follows our intuition that physically close nodes will contribute to each other's congestion. <br><br>
-
-		To construct placement-based partitions, the chip was uniformly divided into 81 bounding boxes, with all nodes within a given box assigned to the same partition. <br><br>
-
-		Our objective is to approximate these placement-based partitions by clustering nodes based on features that exhibit a strong correlation with physical placement.
+      DE-HNN demonstrated a 10% improvement in Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) when incorporating physical placement data as node features and partitioning criteria. This follows our intuition that physically close nodes will contribute to each other's congestion. <br><br>
+      To construct placement-based partitions, the chip was uniformly divided into 81 bounding boxes, with all nodes within a given box assigned to the same partition. <br><br>
+      Our objective is to approximate these placement-based partitions by clustering nodes based on features that exhibit a strong correlation with physical placement.
     </p>
-	<br>
-	<h3 class="text-white text-m font-bold">Feature Analysis</h3>
-	<p class="text-neutral-500 text-left">
-		Using placement-based partitions, we analyzed node features to find those most correlated with the partitioning scheme. <br><br>
-
-		For each of the 81 partitions, we ranked features by correlation with partition membership and contribution to explained variance, then aggregated rankings to identify the most influential features. <br><br>
-		
-		Our analysis showed that the top-ten eigenvectors and node type were the strongest indicators of node co-partitioning.	</p>
-	<br>
-	<h3 class="text-white text-m font-bold">K-Means & Bisecting K-Means Partitioning</h3>
-	<p class="text-neutral-500 text-left">
-		K-Means clustering was used to group nodes efficiently based on features, with 81 centroids initialized to match placement partitions. <br><br>
-
-		The algorithm iteratively adjusted centroids until convergence, assigning each node a partition ID based on its nearest centroid. These IDs were used to construct virtual node structures for message passing. <br><br>
-
-		DE-HNN employs METIS to balance partition sizes. To assess the impact of balancing, we tested K-means partitions with and without enforced balance. <br><br>
-
-		Bisecting K-means, a hybrid of Hierarchical Clustering and K-means, splits clusters iteratively to achieve balanced partitions, aligning more closely with DE-HNN’s strategy.
-
-	</div>
-
+    <br>
+    <h3 class="text-white text-m font-bold">Feature Analysis</h3>
+    <p class="text-neutral-500 text-left">
+      Using placement-based partitions, we analyzed node features to find those most correlated with the partitioning scheme. <br><br>
+      For each of the 81 partitions, we ranked features by correlation with partition membership and contribution to explained variance, then aggregated rankings to identify the most influential features. <br><br>
+      Our analysis showed that the top-ten eigenvectors and node type were the strongest indicators of node co-partitioning.
+    </p>
+    <br>
+    <h3 class="text-white text-m font-bold">K-Means & Bisecting K-Means Partitioning</h3>
+    <p class="text-neutral-500 text-left">
+      K-Means clustering was used to group nodes efficiently based on features, with 81 centroids initialized to match placement partitions. <br><br>
+      The algorithm iteratively adjusted centroids until convergence, assigning each node a partition ID based on its nearest centroid. These IDs were used to construct virtual node structures for message passing. <br><br>
+      DE-HNN employs METIS to balance partition sizes. To assess the impact of balancing, we tested K-means partitions with and without enforced balance. <br><br>
+      Bisecting K-means, a hybrid of Hierarchical Clustering and K-means, splits clusters iteratively to achieve balanced partitions, aligning more closely with DE-HNN's strategy.
+    </p>
+  </div>
+  <GridPattern
+    squares={[
+      [4, 4],
+      [5, 1],
+      [8, 2],
+      [6, 6],
+      [10, 5],
+      [13, 3],
+    ]}
+    class={cn(
+      "z-0",
+      "[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]",
+      "inset-x-0 inset-y-[-50%] h-[200%] skew-y-0"
+    )}
+    fillColor="rgb(31 96 224 / 0.3)"
+  />
 </div>
 
 
