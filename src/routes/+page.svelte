@@ -289,23 +289,21 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 			</h1>
 			<p class="text-neutral-500 text-left">
 				<br>
-				Random Walks can ...
+				In a network, a walk involves starting at one node, moving to a connected node, and repeating this process. Walks can help identify patterns, understand node relationships, or find the shortest paths between points.
 				<br>
 				<br>
-				Dataset comprises of 12 Superblue circuit designs from (Viswanathan, 2012)
+				A random walk follows the same idea but selects the next node randomly at each step. While this may seem arbitrary, random walks are effective at revealing underlying structures in networks, such as clustering patterns and node similarities.
 				<br>
 				<br>
-				Each design has its logic (figure 2) formatted into a netlist (figure 3) containing Cells and Nets.
+				We apply random walks to identify nodes that, despite being far apart in the network, still influence each other in terms of congestion and demand on a chip. This approach helps capture meaningful connections that may not be immediately obvious through traditional methods.
 				<br>
 				<br>
-				Each design's netlist contains around 1.3M cells and 400K nets.
+				<img src="./walks_methods_diagram.png" alt="Random Walks">
 				<br>
 				<br>
-				DE-HNN model processes netlists into directed hypergraph representations, with cells as nodes while nets are directed hyperedges.<br>
-				<br>
-				Node features include physical cell features (size, cell type) and topological features (Laplacian eigenvectors, Persistence Diagrams, and neighborhood degree distrs.).
 			</p>
 		</div>
+		
 </div>
 
 <div 
@@ -317,21 +315,16 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 		</h1>
 		<p class="text-neutral-500 text-left">
 			<br>
-			Random Walks can ...
+			Understanding Random Walks in Networks
 			<br>
 			<br>
-			Dataset comprises of 12 Superblue circuit designs from (Viswanathan, 2012)
+			In a network, a walk involves starting at one node, moving to a connected node, and repeating this process. Walks can help identify patterns, understand node relationships, or find the shortest paths between points.
 			<br>
 			<br>
-			Each design has its logic (figure 2) formatted into a netlist (figure 3) containing Cells and Nets.
+			A random walk follows the same idea but selects the next node randomly at each step. While this may seem arbitrary, random walks are effective at revealing underlying structures in networks, such as clustering patterns and node similarities.
 			<br>
 			<br>
-			Each design's netlist contains around 1.3M cells and 400K nets.
-			<br>
-			<br>
-			DE-HNN model processes netlists into directed hypergraph representations, with cells as nodes while nets are directed hyperedges.<br>
-			<br>
-			Node features include physical cell features (size, cell type) and topological features (Laplacian eigenvectors, Persistence Diagrams, and neighborhood degree distrs.).
+			We apply random walks to identify nodes that, despite being far apart in the network, still influence each other in terms of congestion and demand on a chip. This approach helps capture meaningful connections that may not be immediately obvious through traditional methods.
 		</p>
 	</div>
 	
@@ -372,7 +365,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="">Walter Wong</a>
 						</h3>
-						<p>Walks / Data Analysis</p>
+						<p>Lead Data Analyst / Model Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
 							<li>
 								<a href="https://www.linkedin.com/in/walter-wong-078b6a1b2/" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
@@ -395,7 +388,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="#">Oren Kaplan</a>
 						</h3>
-						<p class="text-sm">Front-end / Partitioning</p>
+						<p class="text-sm">Front-end / Model Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
 							<li>
 								<a href="https://www.linkedin.com/in/oren-kaplan-8380b1231/?trk=opento_sprofile_details" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
@@ -413,12 +406,21 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						</ul>
 					</div>
 					<div class="bg-gray-800 hover:bg-gray-700 shadow-xl py-4 rounded-lg text-center text-white w-64">
-						<img class="shadow-xl object-cover mx-auto mb-4 w-36 h-36 rounded-full" src="james.png" alt="Jese Avatar">
+						<img class="shadow-xl object-cover mx-auto mb-4 w-36 h-36 rounded-full" src="./dmoon.png" alt="Jese Avatar">
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="#">David Moon</a>
 						</h3>
-						<p>Model Pipeline</p>
+						<p>Lead Data Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
+							<li>
+								<a href="https://www.linkedin.com/in/david-moon-09b013239/" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
+									<svg class="w-6 h-6 text-[#0077B5]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+										<path fill-rule="evenodd" d="M12.5 8.8v1.7a3.7 3.7 0 0 1 3.3-1.7c3.5 0 4.2 2.2 4.2 5v5.7h-3.2v-5c0-1.3-.2-2.8-2.1-2.8-1.9 0-2.2 1.3-2.2 2.6v5.2H9.3V8.8h3.2ZM7.2 6.1a1.6 1.6 0 0 1-2 1.6 1.6 1.6 0 0 1-1-2.2A1.6 1.6 0 0 1 6.6 5c.3.3.5.7.5 1.1Z" clip-rule="evenodd"/>
+										<path d="M7.2 8.8H4v10.7h3.2V8.8Z"/>
+									  </svg>  
+										
+								</a>
+							</li>
 							<li>
 								<a href="https://github.com/D2jc" class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300">
 									<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
@@ -431,7 +433,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="#">Jiesen Zhang</a>
 						</h3>
-						<p>Partitioning</p>
+						<p>Model Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
 							<li>
 								<a href="https://www.linkedin.com/in/jiesen-zhang/" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
