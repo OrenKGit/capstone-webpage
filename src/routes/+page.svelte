@@ -68,8 +68,6 @@
         "https://i.pinimg.com/736x/be/c8/5c/bec85c7ff82948be479d49d3e8f5018b.jpg",
     },
     ];
-	const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
 </script>
 
 <div
@@ -78,13 +76,13 @@
 	<!-- alt colors: #6B7280 #1f60e0 #b36705-->
 	<FlickeringGrid
 		class="z-0 absolute inset-0 w-full h-full"
-		squareSize={4}
-		gridGap={6}
+		squareSize={4*1.5}
+		gridGap={6*1.5}
 		color="#1f60e0"
 		maxOpacity={0.5}
 		flickerChance={0.1}
-		width={screenWidth}
-		height={screenHeight}
+		width={1920 * 2}
+		height={1080 * 2}
 	/>
 		
 	<div>
