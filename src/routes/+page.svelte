@@ -76,13 +76,11 @@
 	<!-- alt colors: #6B7280 #1f60e0 #b36705-->
 	<FlickeringGrid
 		class="z-0 absolute inset-0 w-full h-full"
-		squareSize={4*1.5}
-		gridGap={6*1.5}
+		squareSize={4}
+		gridGap={6}
 		color="#1f60e0"
 		maxOpacity={0.5}
-		flickerChance={0.1}
-		width={1920 * 2}
-		height={1080 * 2}
+		flickerChance={0.14}
 	/>
 		
 	<div>
