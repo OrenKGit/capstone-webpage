@@ -15,6 +15,7 @@
 	import Features from '$lib/components/Features.svelte';
 	import BoxReveal from '$lib/components/BoxReveal.svelte';
 	import BackgroundBoxesNew from '$lib/components/BackgroundBoxesNew.svelte';
+	import Lights from '$lib/components/Lights.svelte';
 	//import { variantPriorityOrder } from 'svelte-motion/types/render/utils/animation-state';
 	const contacts = [
 		{
@@ -70,11 +71,11 @@
 </script>
 
 <div
-	class="relative rounded-lg w-full mx-auto bg-background overflow-hidden flex items-center justify-center h-screen"
+	class="relative w-screen h-screen mx-auto bg-background overflow-hidden flex items-center justify-center"
 >
 	<!-- alt colors: #6B7280 #1f60e0 #b36705-->
 	<FlickeringGrid
-		class="z-0 absolute inset-0 size-full"
+		class="z-0 absolute inset-0 w-full h-full"
 		squareSize={4}
 		gridGap={6}
 		color="#1f60e0"
@@ -83,7 +84,7 @@
 		width={1920}
 		height={1080}
 	/>
-
+		
 	<div>
 		<div class="z-10 flex items-center justify-center flex-col gap-6 text-2xl">
 			<BlurIn
@@ -281,36 +282,95 @@
 <GridBeam class="sm:pl-16 pt-28 pl-4 flex items-center">
 </GridBeam>
 <div 
-class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
+  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background"
 >
-		<div class="grid gap-2 max-w-2xl mx-auto">
-			<h1 class="sm:text-5xl text-4xl font-bold text-left">
-				Random Walks
-			</h1>
-			<p class="text-neutral-500 text-left">
-				<br>
-				In a network, a walk involves starting at one node, moving to a connected node, and repeating this process. Walks can help identify patterns, understand node relationships, or find the shortest paths between points.
-				<br>
-				<br>
-				A random walk follows the same idea but selects the next node randomly at each step. While this may seem arbitrary, random walks are effective at revealing underlying structures in networks, such as clustering patterns and node similarities.
-				<br>
-				<br>
-				We apply random walks to identify nodes that, despite being far apart in the network, still influence each other in terms of congestion and demand on a chip. This approach helps capture meaningful connections that may not be immediately obvious through traditional methods.
-				<br>
-				<br>
-				<img src="./walks_methods_diagram.png" alt="Random Walks">
-				<br>
-				<br>
-			</p>
-		</div>
-		
+  <div class="grid gap-2 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-left">
+      Random Walks
+    </h1>
+    <p class="text-neutral-500 text-left">
+      <br>
+      In a network, a walk involves starting at one node, moving to a connected node, and repeating this process. Walks can help identify patterns, understand node relationships, or find the shortest paths between points.
+      <br>
+      <br>
+      A random walk follows the same idea but selects the next node randomly at each step. While this may seem arbitrary, random walks are effective at revealing underlying structures in networks, such as clustering patterns and node similarities.
+      <br>
+      <br>
+      We apply random walks to identify nodes that, despite being far apart in the network, still influence each other in terms of congestion and demand on a chip. This approach helps capture meaningful connections that may not be immediately obvious through traditional methods.
+      <br>
+      <br>
+      <img src="./walks_methods_diagram.png" alt="Random Walks" class="mb-2">
+      <br>
+      <span class="text-sm text-gray-500 text-center justify-center">Diagram of our 3 random walk methods</span>
+      <br>
+      <br>
+    </p>
+  </div>
+</div>
+<GridBeam class="pt-12 flex items-center">
+</GridBeam>
+<div 
+  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
+>
+  <div class="grid gap-2 max-w-2xl mx-auto">
+	
+    <div class="h-[500px] overflow-y-auto rounded-lg border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-gray-900" style="background-color: #3253dc10;">
+      <h2 class="text-2xl font-semibold mb-4">In-Depth Methods Info</h2>
+      <h3 class="text-white text-m font-bold">Random Walks for Node Relationships</h3>
+      <p class="text-neutral-400 text-left">
+        <br>
+        We explore whether <strong>random walks</strong> can uncover meaningful node relationships. Starting from random source nodes, we perform <strong>non-revisiting traversals</strong> in a directed hypergraph, randomly selecting hyperedges and sink nodes. After <strong>five hops</strong>, we create <strong>skip connections</strong>, initialized with random features. These connections evolve during training, making them meaningful for the <strong>DE-HNN model</strong>.
+        <br><br>
+      </p>
+      <h3 class="text-white text-m font-bold">XGBoost Proximity Validation</h3>
+      <p class="text-neutral-400 text-left">
+        <br>
+        The <strong>five-hop limit</strong> fails to capture long-range dependencies (some valid pairs are <strong>100+ hops apart</strong>), and added connections lack validation. To address this, we:
+        <br><br>
+        1. <strong>Remove the hop limit</strong> to allow deeper exploration.
+        <br>
+        2. <strong>Train an XGBoost classifier</strong> to validate whether connections are meaningful based on node features.
+        <br><br>
+        We construct <strong>two datasets</strong> for training:
+        <br><br>
+        - <strong>Random Pairs</strong> (unconnected nodes)
+        <br>
+        - <strong>Topologically Distant Pairs</strong> (5+ hops apart, ensuring connectivity but not physical proximity)
+        <br><br>
+        <strong>In-flow persistence diagrams (PDs)</strong> show strong correlation (0.85–1.0) in valid pairs, making them a <strong>proxy for physical proximity</strong>. Using these features, we predict meaningful connections and integrate them into the <strong>DE-HNN model</strong>.
+        <br><br>
+      </p>
+      <h3 class="text-white text-m font-bold">Weighted Walks & Early Stopping</h3>
+      <p class="text-neutral-400 text-left">
+        <br>
+        To refine the process, we:
+        <br><br>
+        - <strong>Introduce weighted walks</strong>, prioritizing paths that align with valid pairs.
+        <br>
+        - <strong>Implement early stopping</strong> to prevent excessive connections and over-smoothing.
+        <br><br>
+        <strong>Weights are assigned as follows:</strong>
+        <br><br>
+        - <strong>Feature Entropy (40%)</strong> – Measures stability of node features.
+        <br>
+        - <strong>Gradient Strength (30%)</strong> – Identifies structured trends.
+        <br>
+        - <strong>R-Squared Consistency (30%)</strong> – Ensures predictability.
+        <br><br>
+        This final approach <strong>balances long-range discovery with computational efficiency</strong>, improving <strong>DE-HNN's ability to capture meaningful relationships</strong>.
+      </p>
+    </div>
+  </div>
 </div>
 
+
+<GridBeam class="sm:pl-16 pt-28 pl-4 flex items-center">
+</GridBeam>
 <div 
 class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
 >
 	<div class="grid gap-2 max-w-2xl mx-auto">
-		<h1 class="sm:text-5xl text-4xl font-bold text-left">
+		<h1 class="text-4xl font-bold text-left">
 			Virtual Node Partitioning
 		</h1>
 		<p class="text-neutral-500 text-left">
@@ -347,12 +407,31 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 	</GridPattern>
 	
 </div>
-<!--"[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",-->
 
-<GradualSpacing
-  class="font-display text-center text-4xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-5xl md:leading-[5rem]"
-  words="Results & Conclusions"
-/>
+
+
+
+
+
+<div 
+  class="relative flex h-fit w-full items-center justify-center overflow-hidden rounded-lg bg-background p-20"
+>
+  <div class="absolute bottom-0 left-0 w-full h-full z-0 animate-appear opacity-0">
+    <Lights />
+  </div>
+  <div class="grid gap-2 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-left">
+      Results & Conclusions
+    </h1>
+    <p class="text-neutral-500 text-left">
+	</p>
+  </div>
+</div>
+
+
+
+
+
 
 <div
 	class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background py-20"
@@ -388,7 +467,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="#">Oren Kaplan</a>
 						</h3>
-						<p class="text-sm">Front-end / Model Engineer</p>
+						<p class="text-sm">Front-End / Model Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
 							<li>
 								<a href="https://www.linkedin.com/in/oren-kaplan-8380b1231/?trk=opento_sprofile_details" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
@@ -410,7 +489,7 @@ class="relative flex h-fit w-full items-center justify-center overflow-hidden ro
 						<h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
 							<a href="#">David Moon</a>
 						</h3>
-						<p>Lead Data Engineer</p>
+						<p>Data Engineer / Model Engineer</p>
 						<ul class="flex justify-center mt-4 space-x-4">
 							<li>
 								<a href="https://www.linkedin.com/in/david-moon-09b013239/" class="text-[#00acee] hover:text-gray-900 dark:hover:text-white">
